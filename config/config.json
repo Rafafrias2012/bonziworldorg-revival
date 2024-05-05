@@ -6,5 +6,5 @@
   "slowmode": 1500,
   "namelimit": 30,
   "altslowmode": 10000,
-  "charlimit": 400,
+  "charlimit": 400
 }
