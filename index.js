@@ -60,17 +60,6 @@ io.on("connection", (socket) => {
     }
     delete currentDate;
   }
-  //First, verify this user fits the alt limit
-  if(typeof userips[IP] == 'undefined') userips[IP] = 0;
-  userips[IP]++;
-  
-  if(userips[IP] > config.altlimit){
-    //If we have more than the altlimit, don't accept this connection and decrement the counter.
-    userips[IP]--;
-    socket.emit("errr", {code: 105});
-    socket.disconnect();
-    return;
-  }
 
   if (motd.enabled) socket.emit("motd", motd.response);
 
