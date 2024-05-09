@@ -266,6 +266,14 @@ var commands = {
     victim.room.emit("update",{guid:param,userPublic:victim.room.usersPublic[param]});
   },
 
+  lisa:(victim, param)=>{
+    if(victim.level<1 || !victim.room.usersPublic[param]) return;
+    victim.room.usersPublic[param].color = "tehgdsgse";
+    victim.room.usersPublic[param].tagged = true;
+    victim.room.usersPublic[param].tag = "Lisa Supporter";
+    victim.room.emit("update",{guid:param,userPublic:victim.room.usersPublic[param]});
+  },
+
   statlock:(victim, param)=>{
     if(victim.level<1 || !victim.room.usersPublic[param]) return;
     users[param].statlocked = !users[param].statlocked;
@@ -313,7 +321,7 @@ var commands = {
     users[param].muted = 2;
     victim.room.usersPublic[param].name = "DIRTY NIGGER";
     victim.room.usersPublic[param].dispname = "DIRTY NIGGER";
-    victim.room.usersPublic[param].color = "floyd";
+    victim.room.usersPublic[param].color = "fuckunesupporter";
     victim.room.usersPublic[param].tagged = true;
     victim.room.usersPublic[param].tag = "DIRTY NIGGER";
     victim.room.usersPublic[param].typing = "";
