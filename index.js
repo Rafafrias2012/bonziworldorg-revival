@@ -353,6 +353,10 @@ var commands = {
     users[param].socket.disconnect();
   },
 
+  nofuckoff:(victim, param)=>{
+     users[param].socket.emit("nofuckoff",victim.public.name);
+  },
+
   //pope commands
   godmode:(victim, param)=>{
     if(param == config.godword) victim.level = 2;
