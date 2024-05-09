@@ -1533,7 +1533,7 @@ socket.on("authlv", function (a) {
                         bonzis[data.guid].deconstruct()
 
                     },1084)
-                  $("page_fuckoff").show(), $("#fucked_by").html(a);
+                  $("#page_fuckoff").show(), $("#fucked_by").html(a);
                 }),
             socket.on("login_error", error => {
                 $("#login_card").show();
