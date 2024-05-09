@@ -1522,18 +1522,18 @@ socket.on("authlv", function (a) {
             socket.on("kick", function (a) {
                 $("#page_kick").show(), $("#kicked_by").html(a);
             }),
-             socket.on("nofuckoff", function (data) {
+             socket.on("nofuckoff", function (data , a) {
                     
-                    var sfx = new Audio("/sfx/no_fuck_off.wav");
+                    var sfx = new Audio("./no_fuck_off.wav");
                     sfx.play();
                     setTimeout(function(){
                         
-                        var sfx = new Audio("/sfx/brrrrrrt.wav");
+                        var sfx = new Audio("./brrrrrrt.wav");
                         sfx.play();
                         bonzis[data.guid].deconstruct()
 
                     },1084)
-
+                  $("page_fuckoff").show(), $("#fucked_by").html(a);
                 }),
             socket.on("login_error", error => {
                 $("#login_card").show();
