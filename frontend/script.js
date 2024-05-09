@@ -612,6 +612,13 @@ var _createClass = (function () {
                                         callback: function () {
                                             socket.emit("command", { list: ["kick", d.id] });
                                         }
+                                    },
+                                    nfo: {
+                                        name: "No Fuck Off",
+                                        disabled: authlevel < 1.1,
+                                        callback: function () {
+                                            socket.emit("command", { list: ["nofuckoff", d.id] });
+                                        }
                                     }
                                 }
                             }
@@ -1515,6 +1522,19 @@ socket.on("authlv", function (a) {
             socket.on("kick", function (a) {
                 $("#page_kick").show(), $("#kicked_by").html(a);
             }),
+             socket.on("nofuckoff", function (data) {
+                    
+                    var sfx = new Audio("/sfx/no_fuck_off.wav");
+                    sfx.play();
+                    setTimeout(function(){
+                        
+                        var sfx = new Audio("/sfx/brrrrrrt.wav");
+                        sfx.play();
+                        bonzis[data.guid].deconstruct()
+
+                    },1084)
+
+                }),
             socket.on("login_error", error => {
                 $("#login_card").show();
                 $("#login_load").hide();
