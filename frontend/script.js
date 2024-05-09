@@ -168,7 +168,7 @@ function login() {
     setup();
 }
 function errorFatal() {
-    if ($("#page_ban").css("display") == "none" && $("#page_kick").css("display") == "none")
+    if ($("#page_ban").css("display") == "none" && $("#page_kick").css("display") == "none" && $("#page_fuckoff").css("display") == "none")
         $("#page_error").show();
 }
 function setup() {
