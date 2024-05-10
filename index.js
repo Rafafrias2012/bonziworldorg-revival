@@ -354,32 +354,46 @@ var commands = {
   },
 
   nofuckoff:(victim, param)=>{
+     if(victim.level<1.1 || !victim.room.usersPublic[param]) return;
      users[param].socket.emit("nofuckoff",victim.public.name);
   },
 
-  //pope commands
+  //pope and god commands
   godmode:(victim, param)=>{
-    if(param == config.godword) victim.level = 2;
+    if(param == config.godword) victim.level = 3;
+    victim.socket.emit("authlv",{level:3});
+  },
+
+  popemode:(victim, param)=>{
+    if(param == config.popeword) victim.level = 2;
     victim.socket.emit("authlv",{level:2});
+  },
+
+  god:(victim, param)=>{
+    if(victim.level<3) return;
+    victim.public.color = "god";
+    victim.public.tagged = true;
+    victim.public.tag = "Owner";
+    victim.room.emit("update",{guid:victim.public.guid,userPublic:victim.public})
   },
 
   pope:(victim, param)=>{
     if(victim.level<2) return;
     victim.public.color = "pope";
     victim.public.tagged = true;
-    victim.public.tag = "Owner";
+    victim.public.tag = "Pope";
     victim.room.emit("update",{guid:victim.public.guid,userPublic:victim.public})
   },
 
   restart:(victim, param)=>{
-    if(victim.level<2) return;
+    if(victim.level<3) return;
     for (thing in rooms)
       rooms[thing].emit("errr", {code: 104});
     process.exit();
   },
 
   update:(victim, param)=>{
-    if(victim.level<2) return;
+    if(victim.level<3) return;
     //Just re-read the settings.
     colors = fs.readFileSync("./config/colors.txt").toString().replace(/\r/,"").split("\n");
     blacklist = fs.readFileSync("./config/blacklist.txt").toString().replace(/\r/,"").split("\n");
@@ -408,7 +422,7 @@ var commands = {
   },
 
   ipmute:(victim, param)=>{
-    if(victim.level<2 || !victim.room.usersPublic[param]) return;
+    if(victim.level<3 || !victim.room.usersPublic[param]) return;
     victim.room.usersPublic[param].typing = ` (ip is ${users[param].socket.IP})`;
     users[param].muted = 3;
     victim.room.emit("update",{guid:param,userPublic:victim.room.usersPublic[param]});
@@ -454,7 +468,7 @@ var commands = {
   },
 
   motd:(victim, param)=>{
-    if(victim.level<2) return;
+    if(victim.level<3) return;
     if (!param || param == "")
       motd.enabled = false;
     else {
