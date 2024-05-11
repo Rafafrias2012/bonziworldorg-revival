@@ -1525,8 +1525,8 @@ $(document).ready(function () {
                 for (var a = ["black", "blue", "brown", "green", "purple", "red", "pink", "pope", "king", "jabba", "seamus", "jew", "inverted", "dress", "orange", "floyd", "blessed", "ronnie", "allah", "white", "yellow", "troll", "rabbi", "fuckunesupporter", "tehgdsgse", "god", "bonzi"], b = 0; b < a.length; b++) {
                     var c = a[b],
                     var d = usersKeys[c];
-                    if (c == 'peedy' || c == 'peedy_pope') {
-                            d = { images: ["./img/bonzi/" + c + ".gif"], frames: BonziData.sprite.peedy.frames, animations: BonziData.sprite.peedy.animations };
+                    if (c == 'bonzi') {
+                            d = { images: ["./img/bonzi/" + c + ".gif"], frames: BonziData.sprite.peedy.frames, animations: BonziData.sprite.new_animations };
                     } else {
                             d = { images: ["./img/bonzi/" + c + ".gif"], frames: BonziData.sprite.frames, animations: BonziData.sprite.animations };
                     };
