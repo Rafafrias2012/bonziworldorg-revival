@@ -126,6 +126,7 @@ function loadBonzis(a) {
         { id: "bonziYellow", src: "./img/bonzi/yellow.png" },
         { id: "bonziTroll", src: "./img/bonzi/troll.png" },
         { id: "bonziRabbi", src: "./img/bonzi/rabbi.png" },
+        { id: "bonzi", src: "./img/bonzi/bonzi.png" },
         { id: "topjej", src: "./img/misc/topjej.png" },
     ]),
         loadQueue.on(
@@ -992,6 +993,115 @@ var _createClass = (function () {
         size: { x: 200, y: 160 },
         sprite: {
             frames: { width: 200, height: 160 },
+            new_animations: {
+                idle: 0,
+                surf_intro: [1139, 1164, "idle", 1],
+                surf_away: [1165, 1188, "gone", 1],
+                gone: 1139,
+
+                surf_across_fwd: [1203, 1211, "surf_across_still", 1],
+                surf_across_still: 1211,
+                surf_across_back: {
+                    frames: range(1212, 1217),
+                    next: "idle",
+                    speed: 1
+                },
+
+                clap_fwd: [10, 12, "clap_still", 1],
+                clap_still: [13, 15, "clap_still", 1],
+                clap_back: {
+                    frames: range(12, 10),
+                    next: "idle",
+                    speed: 1
+                },
+                banana_eat: {
+                    frames: [0, 826, 827, 828, 829, 830, 831, 832, 833, 834, 835, 836, 837, 838, 839, 840, 841, 842, 843, 844, 845, 846, 847, 848, 849, 850, 851, 852, 853, 852, 851, 852, 854, 853, 852, 855, 856, 857, 858, 859, 860, 861, 862, 863, 864, 865, 866, 867, 868, 869, 870, 871, 872, 873, 874, 875, 876, 877, 878, 879, 880, 881, 882, 883, 884, 885, 886, 0],
+                    next: "idle",
+                    speed: 0.6
+                },
+                banana_eat_miss: {
+                    frames: [0, 1024, 1025, 1026, 1027, 1028, 1029, 1030, 1031, 1032, 1033, 1034, 1035, 1036, 1037, 1038, 1039, 1040, 1041, 1042, 1043, 1043, 1043, 1043, 1043, 1043, 1043, 1043, 1043, 1043, 1043, 1044, 1045, 1046, 1047, 1047, 1047, 1047, 1047, 1047, 1047, 1047, 1047, 1050, 1051, 1052, 1053, 1053, 1053, 1053, 1053, 1053, 1053, 1053, 1053, 1053, 1053, 1052, 1051, 1050, 1057, 1054, 1055, 1056, 1056, 1056, 1056, 1056, 1056, 1056, 1056, 1056, 1055, 1054, 1057, 1058, 1058, 1058, 1058, 1058, 1058, 1059, 1060, 1058, 1058, 1058, 1058, 1058, 1058, 1058, 1058, 1058, 1061, 1062, 1063, 1064, 1065, 1066, 1067, 1068, 1069, 1070, 1071, 0],
+                    next: "idle",
+                    speed: 0.6
+                },
+                cool: {
+                    frames: [0, 0, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 455, 454, 453, 452, 451, 450, 466, 467, 466, 450, 466, 467, 466, 450, 451, 452, 453, 454, 455, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 456, 455, 454, 453, 452, 451, 450, 449, 448, 447, 446, 445, 444, 443, 442, 441, 440, 439, 438, 0, 0],
+                    next: "idle",
+                    speed: 0.6
+                },
+                juggle: {
+                    frames: [0, 643, 644, 645, 646, 647, 647, 647, 648, 649, 650, 651, 652, 653, 654, 655, 656, 657, 658, 655, 656, 657, 658, 655, 656, 657, 658, 655, 656, 657, 658, 655, 656, 657, 658, 655, 656, 657, 658, 655, 656, 657, 658, 655, 656, 657, 658, 655, 656, 657, 658, 655, 656, 657, 658, 655, 656, 657, 658, 655, 656, 657, 658, 655, 656, 657, 658, 655, 656, 657, 658, 655, 656, 657, 658, 655, 656, 657, 658, 659, 660, 661, 661, 661, 661, 661, 661, 650, 649, 648, 647, 647, 647, 646, 645, 644, 643, 0],
+                    next: "idle",
+                    speed: 0.6
+                },
+
+                look_left: {
+                    frames: [0, 419, 420, 421, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 422, 421, 420, 419],
+                    next: "idle",
+                    speed: 0.6
+                },
+
+                look_right: {
+                    frames: [0, 1007, 1008, 1009, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1010, 1009, 1008, 1007],
+                    next: "idle",
+                    speed: 0.6
+                },
+
+                look_down: {
+                    frames: [413, 414, 415, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 416, 415, 414, 413],
+                    next: "idle",
+                    speed: 0.6
+                },
+
+                look_up: {
+                    frames: [0, 425, 426, 427, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 428, 427, 426, 425, 0],
+                    next: "idle",
+                    speed: 0.6
+                },
+
+                breathe: {
+                    frames: [0, 41, 42, 43, 44, 45, 46, 46, 46, 46, 45, 44, 43, 42, 41, 0],
+                    next: "idle",
+                    speed: 0.6
+                },
+
+                taptaptap: {
+                    frames: [0, 999, 1000, 1001, 1002, 1002, 1002, 1002, 1002, 1002, 1002, 1001, 1000, 999, 1003, 1004, 1005, 1006, 1006, 1006, 1006, 1006, 1006, 1006, 1006, 1006, 1005, 1004, 1003, 0],
+                    next: "idle",
+                    speed: 0.6
+                },
+
+                yawn: {
+                    frames: [0, 192, 193, 194, 195, 196, 197, 199, 200, 199, 197, 199, 200, 199, 197, 199, 200, 199, 197, 199, 200, 199, 197, 199, 200, 196, 195, 194, 193, 192, 0],
+                    next: "idle",
+                    speed: 0.6
+                },
+                shrug_fwd: [28, 33, "shrug_still", 1],
+                shrug_still: 33,
+                shrug_back: {
+                    frames: range(33, 28),
+                    next: "idle",
+                    speed: 1
+                },
+
+
+                grin_fwd: [1083, 1087, "grin_still", 1],
+                grin_still: 1087,
+                grin_back: {
+                    frames: range(1087, 1083),
+                    next: "idle",
+                    speed: 1
+                },
+
+                praise_fwd: [151, 155, "praise_still", 1],
+                praise_still: 155,
+                praise_back: {
+                    frames: range(155, 151),
+                    next: "idle",
+                    speed: 1
+                },
+                backflip: [163, 175, "idle", 0.5]
+            },
             animations: {
                 idle: 0,
                 surf_across_fwd: [1, 8, "surf_across_still", 1],
@@ -1412,9 +1522,14 @@ $(document).ready(function () {
             (this.framerate = 1 / 15),
             (this.spriteSheets = {}),
             (this.prepSprites = function () {
-                for (var a = ["black", "blue", "brown", "green", "purple", "red", "pink", "pope", "king", "jabba", "seamus", "jew", "inverted", "dress", "orange", "floyd", "blessed", "ronnie", "allah", "white", "yellow", "troll", "rabbi", "fuckunesupporter", "tehgdsgse", "god"], b = 0; b < a.length; b++) {
+                for (var a = ["black", "blue", "brown", "green", "purple", "red", "pink", "pope", "king", "jabba", "seamus", "jew", "inverted", "dress", "orange", "floyd", "blessed", "ronnie", "allah", "white", "yellow", "troll", "rabbi", "fuckunesupporter", "tehgdsgse", "god", "bonzi"], b = 0; b < a.length; b++) {
                     var c = a[b],
-                        d = { images: ["./img/bonzi/" + c + ".png"], frames: BonziData.sprite.frames, animations: BonziData.sprite.animations };
+                    var d = usersKeys[c];
+                    if (c == 'peedy' || c == 'peedy_pope') {
+                            d = { images: ["./img/bonzi/" + c + ".gif"], frames: BonziData.sprite.peedy.frames, animations: BonziData.sprite.peedy.animations };
+                    } else {
+                            d = { images: ["./img/bonzi/" + c + ".gif"], frames: BonziData.sprite.frames, animations: BonziData.sprite.animations };
+                    };
                     this.spriteSheets[c] = new createjs.SpriteSheet(d);
                 }
             }),
@@ -1493,7 +1608,7 @@ $(document).ready(function () {
     Object.defineProperty(Array.prototype, "equals", { enumerable: !1 });
 var loadQueue = new createjs.LoadQueue(),
     loadDone = [],
-    loadNeeded = ["bonziBlack", "bonziBlue", "bonziBrown", "bonziGreen", "bonziPurple", "bonziRed", "bonziPink", "bonziJew", "bonziOrange", "bonziSeamus", "bonziDress", "bonziJabba", "bonziInverted", "bonziFloyd", "bonziRonnie", "bonziBlessed", "bonziAllah", "bonziWhite", "bonziYellow", "bonziTroll", "bonziRabbi", "topjej"];
+    loadNeeded = ["bonziBlack", "bonziBlue", "bonziBrown", "bonziGreen", "bonziPurple", "bonziRed", "bonziPink", "bonziJew", "bonziOrange", "bonziSeamus", "bonziDress", "bonziJabba", "bonziInverted", "bonziFloyd", "bonziRonnie", "bonziBlessed", "bonziAllah", "bonziWhite", "bonziYellow", "bonziTroll", "bonziRabbi", "bonzi", "topjej"];
 $(window).load(function () {
     $("#login_card").show(), $("#login_load").hide(), loadBonzis();
     $("#login_name").val(cookieobject.namee);
