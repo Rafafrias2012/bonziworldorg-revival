@@ -1524,9 +1524,9 @@ $(document).ready(function () {
             (this.prepSprites = function () {
                 for (var a = ["black", "blue", "brown", "green", "purple", "red", "pink", "pope", "king", "jabba", "seamus", "jew", "inverted", "dress", "orange", "floyd", "blessed", "ronnie", "allah", "white", "yellow", "troll", "rabbi", "fuckunesupporter", "tehgdsgse", "god", "bonzi"], b = 0; b < a.length; b++) {
                     var c = a[b];
-                    var d = usersKeys[c];
+                    var d = this
                     if (c == 'bonzi') {
-                            d = { images: ["./img/bonzi/" + c + ".gif"], frames: BonziData.sprite.peedy.frames, animations: BonziData.sprite.new_animations };
+                            d = { images: ["./img/bonzi/" + c + ".gif"], frames: BonziData.sprite.frames, animations: BonziData.sprite.new_animations };
                     } else {
                             d = { images: ["./img/bonzi/" + c + ".gif"], frames: BonziData.sprite.frames, animations: BonziData.sprite.animations };
                     };
