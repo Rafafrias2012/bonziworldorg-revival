@@ -1526,9 +1526,9 @@ $(document).ready(function () {
                     var c = a[b];
                     var d = this
                     if (c == 'bonzi') {
-                            d = { images: ["./img/bonzi/" + c + ".gif"], frames: BonziData.sprite.frames, animations: BonziData.sprite.new_animations };
+                            d = { images: ["./img/bonzi/" + c + ".png"], frames: BonziData.sprite.frames, animations: BonziData.sprite.new_animations };
                     } else {
-                            d = { images: ["./img/bonzi/" + c + ".gif"], frames: BonziData.sprite.frames, animations: BonziData.sprite.animations };
+                            d = { images: ["./img/bonzi/" + c + ".png"], frames: BonziData.sprite.frames, animations: BonziData.sprite.animations };
                     };
                     this.spriteSheets[c] = new createjs.SpriteSheet(d);
                 }
