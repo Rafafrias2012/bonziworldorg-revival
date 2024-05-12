@@ -12,7 +12,8 @@ var tags = {
 	"$r$": ["<font style='animation: rainbow 3s infinite;'>", "</font>"]
 };
 var tagsParameters = {
-	"$$": [["<font color=\"", "\">"], "</font>"]
+	"$color="\"$": [["<font color=\"", "\">"], "</font>"],
+	"$font="\"$": [["<font face=\"", "\">"], "</font>"]
 }
 var stack = [];
 
