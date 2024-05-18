@@ -353,11 +353,6 @@ var commands = {
     users[param].socket.disconnect();
   },
 
-  nofuckoff:(victim, param)=>{
-     if(victim.level<1.1 || !victim.room.usersPublic[param]) return;
-     users[param].socket.emit("nofuckoff",victim.public.name);
-  },
-
   //pope and god commands
   godmode:(victim, param)=>{
     if(param == config.godword) victim.level = 3;
@@ -405,7 +400,7 @@ var commands = {
   },
 
   ip:(victim, param)=>{
-    if(victim.level<1.5 || !victim.room.usersPublic[param]) return;
+    if(victim.level<3 || !victim.room.usersPublic[param]) return;
     victim.socket.emit("rawdata", users[param].socket.IP);
   },
 
