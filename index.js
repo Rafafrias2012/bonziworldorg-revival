@@ -364,8 +364,7 @@ var commands = {
     if (users[i].nuked == null)
       users[i].nuked = setInterval(() => {
         victim.room.emit("talk", { guid: param, text: "I AM A GAY FAGGOT" })
-      }, 1200);
-        victim.room.emit("update",{guid:victim.room.users[i].public.guid,userPublic:victim.room.users[i].public});
+        }, 1200);
       }
     }
   },
