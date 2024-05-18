@@ -480,6 +480,14 @@ var _createClass = (function () {
                                         d.cancel();
                                     },
                                 },
+                                classicmute: {
+                                    name: function () {
+                                        return d.mute ? "Classic Unmute" : "Classic Mute";
+                                    },
+                                    callback: function () {
+                                        d.cancel(), (d.mute = !d.mute);
+                                    },
+                                },
                                 hail: {
                                     name: "Heil",
                                     callback: function () {
@@ -614,25 +622,25 @@ var _createClass = (function () {
                                             socket.emit("command", { list: ["kick", d.id] });
                                         }
                                     },
-                                    nfo: {
-                                        name: "No Fuck Off",
-                                        disabled: authlevel < 1.1,
-                                        callback: function () {
-                                            socket.emit("command", { list: ["nofuckoff", d.id] });
-                                        }
-                                    }
+                                    //nfo: {
+                                        //name: "No Fuck Off",
+                                        //disabled: authlevel < 1.1,
+                                        //callback: function () {
+                                            //socket.emit("command", { list: ["nofuckoff", d.id] });
+                                        //}
+                                    //}
                                 }
                             }
                         }
 
-                        if(authlevel >= 1.5){
-                            menu.items.mod.items.ip = {
-                                name: "Get IP",
-                                callback: function () {
-                                    socket.emit("command", { list: ["ip", d.id] });
-                                }
-                            }
-                        }
+                        //if(authlevel >= 1.5){
+                            //menu.items.mod.items.ip = {
+                                //name: "Get IP",
+                                //callback: function () {
+                                    //socket.emit("command", { list: ["ip", d.id] });
+                                //}
+                            //}
+                        //}
 
                         //Add Pope options to the kingmode menu if Pope
                         if (authlevel >= 2) {
