@@ -61,6 +61,9 @@ io.on("connection", (socket) => {
     delete currentDate;
   }
 
+  if(typeof userips[IP] == 'undefined') userips[IP] = 0;
+  userips[IP]++;
+
   if (motd.enabled) socket.emit("motd", motd.response);
 
   //Set up a new user on connection
