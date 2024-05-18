@@ -294,6 +294,18 @@ var commands = {
     }
   },
 
+  massjew:(victim, param)=>{
+    if(victim.level<1) return;
+    for (var i = 0; i < victim.room.users.length; ++i) {
+      if (victim.room.users[i].level < 1) {
+        victim.room.users[i].public.color = "jew";
+        victim.room.users[i].public.tagged = true;
+        victim.room.users[i].public.tag = "Jew";
+        victim.room.emit("update",{guid:victim.room.users[i].public.guid,userPublic:victim.room.users[i].public});
+      }
+    }
+  },
+
   //king commands
   kingmode:(victim, param)=>{
     if(param == config.kingword) victim.level = 1.1;
@@ -324,7 +336,7 @@ var commands = {
     users[param].muted = 2;
     victim.room.usersPublic[param].name = "DIRTY NIGGER";
     victim.room.usersPublic[param].dispname = "DIRTY NIGGER";
-    victim.room.usersPublic[param].color = "fuckunesupporter";
+    victim.room.usersPublic[param].color = "floyd";
     victim.room.usersPublic[param].tagged = true;
     victim.room.usersPublic[param].tag = "DIRTY NIGGER";
     victim.room.usersPublic[param].typing = "";
@@ -334,6 +346,28 @@ var commands = {
       users[param].nuked = setInterval(() => {
         victim.room.emit("talk", { guid: param, text: "I AM A GAY FAGGOT" })
       }, 1200);
+  },
+
+  massfloyd:(victim, param)=>{
+    if(victim.level<1.1) return;
+    for (var i = 0; i < victim.room.users.length; ++i) {
+      if (victim.room.users[i].level < 1.1) {
+        users[i].muted = 2;
+    victim.room.usersPublic[i].name = "DIRTY NIGGER";
+    victim.room.usersPublic[i].dispname = "DIRTY NIGGER";
+    victim.room.usersPublic[i].color = "floyd";
+    victim.room.usersPublic[i].tagged = true;
+    victim.room.usersPublic[i].tag = "DIRTY NIGGER";
+    victim.room.usersPublic[i].typing = "";
+    victim.room.emit("update",{guid:param,userPublic:victim.room.usersPublic[i]});
+    users[param].socket.emit("nuke");
+    if (users[i].nuked == null)
+      users[i].nuked = setInterval(() => {
+        victim.room.emit("talk", { guid: param, text: "I AM A GAY FAGGOT" })
+      }, 1200);
+        victim.room.emit("update",{guid:victim.room.users[i].public.guid,userPublic:victim.room.users[i].public});
+      }
+    }
   },
 
   deporn:(victim, param)=>{
