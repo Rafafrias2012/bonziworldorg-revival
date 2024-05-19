@@ -369,19 +369,7 @@ var commands = {
     }
   },
 
-  deporn:(victim, param)=>{
-    if(victim.level<1.1 || !victim.room.usersPublic[param] || !victim.room.usersPublic[param].color.startsWith("http")) return;
-    var newBlacklist = "";
-    for (var i = 0; i < colorBlacklist.length; ++i)
-      newBlacklist += colorBlacklist[i] + "\n";
-    newBlacklist += victim.room.usersPublic[param].color;
-    fs.writeFileSync("./config/colorBlacklist.txt", newBlacklist);
-    colorBlacklist = fs.readFileSync("./config/colorBlacklist.txt").toString().replace(/\r/,"").split("\n");
-    victim.room.usersPublic[param].name = "I love men";
-    victim.room.usersPublic[param].dispname = "I love men";
-    victim.room.usersPublic[param].color = "jew";
-    victim.room.emit("update",{guid:param,userPublic:victim.room.usersPublic[param]});
-  },
+  
 
   kick:(victim, param)=>{
     if(victim.level<1.1 || !victim.room.usersPublic[param]) return;
