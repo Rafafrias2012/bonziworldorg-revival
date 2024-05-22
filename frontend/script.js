@@ -127,6 +127,8 @@ function loadBonzis(a) {
         { id: "bonziTroll", src: "./img/bonzi/troll.png" },
         { id: "bonziRabbi", src: "./img/bonzi/rabbi.png" },
         { id: "bonzi", src: "./img/bonzi/bonzi.png" },
+        { id: "peedy", src: "./img/bonzi/peedy.png" },
+        { id: "clippy", src: "./img/bonzi/clippy.png" },
         { id: "topjej", src: "./img/misc/topjej.png" },
     ]),
         loadQueue.on(
@@ -1000,8 +1002,41 @@ var _createClass = (function () {
     BonziData = {
         size: { x: 200, y: 160 },
         sprite: {
+            peedy: {        
+                frames: { width: 160, height: 128 },
+                animations: {
+                idle: 0,
+                surf_away: { frames: range(360, 412), next: "gone", ticks: 52, speed: 0.5 },
+                surf_intro: { frames: range(823, 848), next: "idle", ticks: 25, speed: 0.5 },
+                backflip: { frames: range(0, 901), next: "idle", ticks: 901, speed: 0.5 },
+                look_left_fwd: [193, 196, "look_left_still", 0.5],
+                look_left_still: 196,
+                look_left_back: { frames: range(196, 193), next: "idle", speed: 0.5 },
+                praise_fwd: [199, 214, "praise_still", 0.5],
+                praise_still: 215,
+                praise_back: { frames: range(205, 199), next: "idle", speed: 0.5 },
+                gone: 902,
+                }
+            },
+            clippy: {        
+                frames: { width: 124, height: 93 },
+                animations: {
+                idle: 0,
+                surf_away: { frames: range(360, 412), next: "gone", ticks: 52, speed: 0.5 },
+                surf_intro: { frames: range(823, 848), next: "idle", ticks: 25, speed: 0.5 },
+                backflip: { frames: range(0, 901), next: "idle", ticks: 901, speed: 0.5 },
+                look_left_fwd: [193, 196, "look_left_still", 0.5],
+                look_left_still: 196,
+                look_left_back: { frames: range(196, 193), next: "idle", speed: 0.5 },
+                praise_fwd: [199, 214, "praise_still", 0.5],
+                praise_still: 215,
+                praise_back: { frames: range(205, 199), next: "idle", speed: 0.5 },
+                gone: 902,
+                }
+            },
+        bonzi: { 
             frames: { width: 200, height: 160 },
-            new_animations: {
+            animations: {
                 idle: 0,
                 surf_intro: [1139, 1164, "idle", 1],
                 surf_away: [1165, 1188, "gone", 1],
@@ -1530,11 +1565,15 @@ $(document).ready(function () {
             (this.framerate = 1 / 15),
             (this.spriteSheets = {}),
             (this.prepSprites = function () {
-                for (var a = ["black", "blue", "brown", "green", "purple", "red", "pink", "pope", "king", "jabba", "seamus", "jew", "inverted", "dress", "orange", "floyd", "blessed", "ronnie", "allah", "white", "yellow", "troll", "rabbi", "fuckunesupporter", "tehgdsgse", "god", "bonzi"], b = 0; b < a.length; b++) {
+                for (var a = ["black", "blue", "brown", "green", "purple", "red", "pink", "pope", "king", "jabba", "seamus", "jew", "inverted", "dress", "orange", "floyd", "blessed", "ronnie", "allah", "white", "yellow", "troll", "rabbi", "fuckunesupporter", "tehgdsgse", "god", "bonzi", "peedy", "clippy"], b = 0; b < a.length; b++) {
                     var c = a[b];
                     var d = this
-                    if (c == 'bonzi') {
-                            d = { images: ["./img/bonzi/" + c + ".png"], frames: BonziData.sprite.frames, animations: BonziData.sprite.new_animations };
+                    if (c == 'peedy') {
+                            d = { images: ["./img/bonzi/" + c + ".png"], frames: BonziData.peedy.sprite.frames, animations: BonziData.sprite.peedy.animations };
+                    } else if (c == 'clippy') {
+                            d = { images: ["./img/bonzi/" + c + ".png"], frames: BonziData.clippy.sprite.frames, animations: BonziData.sprite.clippy.animations };
+                    } else if (c == 'bonzi') {
+                            d = { images: ["./img/bonzi/" + c + ".png"], frames: BonziData.sprite.f1.frames, animations: BonziData.sprite.bonzi.animations };
                     } else {
                             d = { images: ["./img/bonzi/" + c + ".png"], frames: BonziData.sprite.frames, animations: BonziData.sprite.animations };
                     };
@@ -1616,7 +1655,7 @@ $(document).ready(function () {
     Object.defineProperty(Array.prototype, "equals", { enumerable: !1 });
 var loadQueue = new createjs.LoadQueue(),
     loadDone = [],
-    loadNeeded = ["bonziBlack", "bonziBlue", "bonziBrown", "bonziGreen", "bonziPurple", "bonziRed", "bonziPink", "bonziJew", "bonziOrange", "bonziSeamus", "bonziDress", "bonziJabba", "bonziInverted", "bonziFloyd", "bonziRonnie", "bonziBlessed", "bonziAllah", "bonziWhite", "bonziYellow", "bonziTroll", "bonziRabbi", "bonzi", "topjej"];
+    loadNeeded = ["bonziBlack", "bonziBlue", "bonziBrown", "bonziGreen", "bonziPurple", "bonziRed", "bonziPink", "bonziJew", "bonziOrange", "bonziSeamus", "bonziDress", "bonziJabba", "bonziInverted", "bonziFloyd", "bonziRonnie", "bonziBlessed", "bonziAllah", "bonziWhite", "bonziYellow", "bonziTroll", "bonziRabbi", "bonzi", "peedy", "clippy", "topjej"];
 $(window).load(function () {
     $("#login_card").show(), $("#login_load").hide(), loadBonzis();
     $("#login_name").val(cookieobject.namee);
