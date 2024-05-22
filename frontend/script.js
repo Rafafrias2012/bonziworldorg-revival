@@ -1492,7 +1492,7 @@ var _createClass = (function () {
             ],
         ],
         event_list_fact_end: [[{ type: "text", text: "o gee whilickers wasn't that sure interesting huh" }]],
-    };
+    }
 (BonziData.event_list_joke = [
     { type: "add_random", pool: "event_list_joke_open", add: BonziData.event_list_joke_open },
     { type: "anim", anim: "shrug_fwd", ticks: 15 },
