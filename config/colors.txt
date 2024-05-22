@@ -17,3 +17,5 @@ troll
 white
 yellow
 bonzi
+peedy
+clippy
